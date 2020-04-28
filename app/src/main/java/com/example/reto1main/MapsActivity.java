@@ -236,13 +236,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
     public void addMarker(String name){
-            markers.add(mMap.addMarker(new MarkerOptions()
+        markerLocationDefault = new LatLng(locationPerson.getLatitude()+0.0008, locationPerson.getLongitude()-0.0002);
+        markers.add(mMap.addMarker(new MarkerOptions()
                     .position(markerLocationDefault).draggable(true)
                     .title(name)));
     }
 
     public void updateLocationPerson(Location location){
-
+        locationPerson = location;
         if(person==null) {
             person = new MarkerOptions().position(new LatLng(location.getLatitude(), location.getLongitude()));
             person.icon(BitmapDescriptorFactory.fromResource(R.drawable.personlocation));
